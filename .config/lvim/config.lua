@@ -156,7 +156,7 @@ formatters.setup {
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "flake8", filetypes = { "python" }, extra_args = { '--max-line-length', '88' } },
+  { command = "flake8", filetypes = { "python" }, extra_args = { '--max-line-length', '88', "--extend-ignore", "E203" } },
   --   {
   --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
   --     command = "shellcheck",

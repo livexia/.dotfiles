@@ -7,12 +7,18 @@ a global executable or a path to
 an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
--- general
-lvim.log.level = "warn"
+-- vim options
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 lvim.format_on_save.enabled = true
+
+-- general
+lvim.log.level = "info"
+lvim.format_on_save = {
+    enabled = true,
+    pattern = "*.lua",
+    timeout = 1000,
+}
 -- lvim.colorscheme = "tokyonight_moon"
 -- lvim.colorscheme = "lunar"
 -- to disable icons and use a minimalist setup, uncomment the following

@@ -69,6 +69,13 @@ lvim.builtin.which_key.mappings["t"] = {
     r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+lvim.builtin.which_key.mappings["m"] = {
+    name = "MarkDown",
+    p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
+    s = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
+    t = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
+}
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -210,7 +217,7 @@ lvim.plugins = {
     },
     {
         "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
+        build = "cd app && npm install",
         ft = "markdown",
     },
 }

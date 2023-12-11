@@ -102,6 +102,12 @@ source $ZSH/oh-my-zsh.sh
 #
 . "$HOME/.cargo/env"
 
+mac_2600x="a8:a1:59:03:1c:10"
+mac_3900x="18:c0:4d:39:85:67"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
 export PATH=/home/livexia/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.config/nvm"

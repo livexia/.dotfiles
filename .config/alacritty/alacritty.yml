@@ -896,7 +896,7 @@
 
 #themes
 import:
- - /home/livexia/.config/alacritty/themes/themes/nord.yaml
+ - /home/livexia/.config/alacritty/themes/themes/tokyo-night.yaml
 
 # font
 font:

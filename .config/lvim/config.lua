@@ -239,15 +239,26 @@ lvim.plugins = {
 -- })
 
 -- rust-tool (https://github.com/simrat39/rust-tools.nvim)
-local rt = require("rust-tools")
 
-rt.setup({
+local rt = require("rust-tools")
+local rt_opts = {
     server = {
         on_attach = function(_, bufnr)
             -- Hover actions
-            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
             -- Code action groups
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+            vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
     },
-})
+    -- debugging stuff
+    -- MacOS: ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
+    dap = {
+        adapter = {
+            type = "executable",
+            command = "lldb-vscode",
+            name = "rt_lldb",
+        },
+    },
+}
+
+rt.setup(rt_opts)

@@ -208,6 +208,11 @@ lvim.plugins = {
         },
         ft = { "fugitive" }
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        ft = "markdown",
+    },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

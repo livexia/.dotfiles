@@ -27,6 +27,7 @@ vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboar
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-z>"] = ":set wrap!<cr>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -242,6 +243,9 @@ lvim.plugins = {
 
 local rt = require("rust-tools")
 local rt_opts = {
+    runnables = {
+        use_telescope = true,
+    },
     server = {
         on_attach = function(_, bufnr)
             -- Hover actions
@@ -249,6 +253,16 @@ local rt_opts = {
             -- Code action groups
             vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy",
+                },
+            },
+        },
     },
     -- debugging stuff
     -- MacOS: ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/

@@ -896,4 +896,8 @@
 
 #themes
 import:
- - ~/.config/alacritty/themes/themes/tokyo-night-storm.yaml
+ - /home/livexia/.config/alacritty/themes/themes/nord.yaml
+
+# font
+font:
+  size: 12

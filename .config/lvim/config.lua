@@ -266,6 +266,7 @@ local rt_opts = {
     },
     -- debugging stuff
     -- MacOS: ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
+    -- Debian: ln -s /usr/bin/lldb-vscode-14 /usr/bin/lldb-vscode
     dap = {
         adapter = {
             type = "executable",

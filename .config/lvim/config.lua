@@ -155,6 +155,15 @@ lvim.builtin.treesitter.highlight.enable = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     { command = "black", filetypes = { "python" } },
+    {
+        name = "prettier",
+        ---@usage arguments to pass to the formatter
+        -- these cannot contain whitespace
+        -- options such as `--line-width 80` become either `{"--line-width", "80"}` or `{"--line-width=80"}`
+        args = { "--print-width", "88" },
+        ---@usage only start in these filetypes, by default it will attach to all filetypes it supports
+        -- filetypes = { "html", "css", "sass", "scss", "less", "json", "javascript", "typescript", "typescriptreact" },
+    },
     -- { command = "isort", filetypes = { "python" } },
     --   {
     --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration

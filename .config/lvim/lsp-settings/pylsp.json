@@ -1,0 +1,8 @@
+{
+    "pylsp.plugins.pycodestyle.enabled": false,
+    "pylsp.plugins.flake8.enabled": true,
+    "pylsp.configurationSources": [
+        "flake8"
+    ],
+    "pylsp.plugins.flake8.maxLineLength": 88
+}

@@ -194,9 +194,6 @@ lvim.plugins = {
     {
         "arcticicestudio/nord-vim",
     },
-    {
-        "simrat39/rust-tools.nvim"
-    },
     { "nvim-lua/plenary.nvim" },
     { "mfussenegger/nvim-dap" },
     {
@@ -223,6 +220,11 @@ lvim.plugins = {
         build = "cd app && npm install",
         ft = "markdown",
     },
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^3', -- Recommended
+        ft = { 'rust' },
+    }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -239,24 +241,26 @@ lvim.plugins = {
 --   end,
 -- })
 
--- rust-tool (https://github.com/simrat39/rust-tools.nvim)
 
-local rt = require("rust-tools")
-local rt_opts = {
-    runnables = {
-        use_telescope = true,
+-- rustaceanvim see: https://github.com/mrcjkb/rustaceanvim
+-- skip lspconfig rust_analyzer
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
+vim.g.rustaceanvim = {
+    -- Plugin configuration
+    tools = {
     },
+    -- LSP configuration
     server = {
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
+            -- you can also put keymaps in here
             -- Hover actions
-            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
-            -- Code action groups
-            vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
+            vim.keymap.set("n", "K", function()
+                vim.cmd.RustLsp { 'hover', 'actions' }
+            end, { buffer = bufnr })
         end,
         settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
                 -- enable clippy on save
                 checkOnSave = {
                     command = "clippy",
@@ -264,9 +268,7 @@ local rt_opts = {
             },
         },
     },
-    -- debugging stuff
-    -- MacOS: ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
-    -- Debian: ln -s /usr/bin/lldb-vscode-14 /usr/bin/lldb-vscode
+    -- DAP configuration
     dap = {
         adapter = {
             type = "executable",
@@ -275,8 +277,6 @@ local rt_opts = {
         },
     },
 }
-
-rt.setup(rt_opts)
 
 -- add `pyright` to `skipped_servers` list
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })

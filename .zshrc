@@ -1,3 +1,10 @@
+# profiling zsh
+zmodload zsh/zprof
+
+# nvm plugin lazy load
+export NVM_DIR="$HOME/.config/nvm"
+zstyle ':omz:plugins:nvm' lazy yes
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -70,7 +77,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,10 +117,6 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 fi
 export PATH=/home/livexia/.local/bin:$PATH
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
@@ -127,3 +130,6 @@ eval $(opam env)
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# profiling zsh
+zprof

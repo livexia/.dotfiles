@@ -1,5 +1,5 @@
 # profiling zsh
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # nvm plugin lazy load
 export NVM_DIR="$HOME/.config/nvm"
@@ -132,4 +132,4 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # profiling zsh
-zprof
+# zprof

@@ -22,7 +22,7 @@ dotfiles push
 New Machine:
 
 ```
-git clone --separate-git-dir=$HOME/.dotfiles https://github.com/anandpiyer/.dotfiles.git tmpdotfiles
+git clone --separate-git-dir=$HOME/.dotfiles https://github.com/livexia/.dotfiles.git tmpdotfiles
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
 rm -r tmpdotfiles
 ```

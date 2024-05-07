@@ -1,10 +1,6 @@
 # profiling zsh
 # zmodload zsh/zprof
 
-# nvm plugin lazy load
-export NVM_DIR="$HOME/.config/nvm"
-zstyle ':omz:plugins:nvm' lazy yes
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -77,7 +73,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm)
+plugins=(git asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,11 +121,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ocaml
 eval $(opam env)
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # profiling zsh
 # zprof

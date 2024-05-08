@@ -24,5 +24,6 @@ New Machine:
 ```
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/livexia/.dotfiles.git tmpdotfiles
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
+dotfiles config status.showUntrackedFiles no
 rm -r tmpdotfiles
 ```

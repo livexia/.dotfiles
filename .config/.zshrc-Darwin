@@ -1,0 +1,18 @@
+# zshrc for macOS
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# proxy
+alias enable_proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+alias disable_proxy="unset {http,https,ftp,all}_proxy"
+
+export PATH="/Users/livexia/Library/Caches/.wasm-pack/.wasm-bindgen-cargo-install-0.2.70/bin:$PATH"
+
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+
+# Android SDK/NDK
+export NDK_HOME=/Users/livexia/Library/Android/sdk/ndk/26.1.10909125
+export ANDROID_HOME=/Users/livexia/Library/Android/sdk
+
+# asdf java
+. ~/.asdf/plugins/java/set-java-home.zsh

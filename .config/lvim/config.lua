@@ -222,8 +222,14 @@ lvim.plugins = {
     },
     {
         'mrcjkb/rustaceanvim',
-        version = '^3', -- Recommended
-        ft = { 'rust' },
+        version = '^4', -- Recommended
+        lazy = false,   -- This plugin is already lazy
+    },
+    {
+        "j-hui/fidget.nvim",
+        opts = {
+            -- options
+        },
     }
 }
 
@@ -272,7 +278,8 @@ vim.g.rustaceanvim = {
     dap = {
         adapter = {
             type = "executable",
-            command = "lldb-vscode",
+            -- ln -s $(brew --prefix)/opt/llvm/bin/lldb-dap $(brew --prefix)/bin/
+            command = "lldb-dap",
             name = "rt_lldb",
         },
     },

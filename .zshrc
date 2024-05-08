@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 . "$HOME/.cargo/env"
+export PATH=$HOME/.local/bin:$PATH
+. "$HOME/.config/.zshrc-`uname`"
 
 mac_2600x="a8:a1:59:03:1c:10"
 mac_3900x="18:c0:4d:39:85:67"
@@ -111,7 +113,6 @@ mac_3900x="18:c0:4d:39:85:67"
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
 fi
-export PATH=/home/livexia/.local/bin:$PATH
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
@@ -120,7 +121,9 @@ eval "$(starship init zsh)"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ocaml
-eval $(opam env)
+if type "opam" > /dev/null; then
+    eval $(opam env)
+fi
 
 # profiling zsh
 # zprof

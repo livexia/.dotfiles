@@ -73,7 +73,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf gitfast)
+plugins=(git asdf gitfast git-auto-fetch)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,6 +120,9 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 if type "opam" > /dev/null; then
     eval $(opam env)
 fi
+
+# ohmyzsh git plugin
+GIT_AUTO_FETCH_INTERVAL=1500 # in seconds
 
 # profiling zsh
 # zprof

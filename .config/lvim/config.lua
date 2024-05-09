@@ -249,25 +249,27 @@ lvim.plugins = {
 
 
 -- rustaceanvim see: https://github.com/mrcjkb/rustaceanvim
--- skip lspconfig rust_analyzer
+-- see: ~/.config/lvim/after/ftplugin/rust.lua
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
 vim.g.rustaceanvim = {
     -- Plugin configuration
     tools = {
+        -- executor = 'toggleterm'
     },
     -- LSP configuration
     server = {
         on_attach = function(client, bufnr)
             -- you can also put keymaps in here
-            -- Hover actions
-            vim.keymap.set("n", "K", function()
-                vim.cmd.RustLsp { 'hover', 'actions' }
-            end, { buffer = bufnr })
         end,
-        settings = {
+        default_settings = {
             -- rust-analyzer language server configuration
             ['rust-analyzer'] = {
                 -- enable clippy on save
+                cargo = {
+                    allFeatures = true,
+                    loadOutDirsFromCheck = true,
+                    runBuildScripts = true,
+                },
                 checkOnSave = {
                     command = "clippy",
                 },
@@ -284,6 +286,7 @@ vim.g.rustaceanvim = {
         },
     },
 }
+
 
 -- add `pyright` to `skipped_servers` list
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })

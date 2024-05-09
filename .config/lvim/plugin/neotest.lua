@@ -45,7 +45,7 @@ neotest.setup {
 }
 
 
--- vim.keymap.set('n', '<leader>nr', neotest.run.run, desc('[n]eotest: [r]un nearest'))
+vim.keymap.set('n', '<leader>nr', neotest.run.run, desc('[n]eotest: [r]un nearest'))
 vim.keymap.set('n', '<leader>nR', function()
     neotest.run.run({ strategy = "dap" })
 end, desc('[n]eotest: [r]un nearest DAP'))

@@ -266,6 +266,16 @@ vim.g.rustaceanvim = {
     -- Plugin configuration
     tools = {
         -- executor = 'toggleterm'
+        --
+        -- codelens see: https://github.com/LunarVim/starter.lvim/blob/rust-ide/config.lua
+        on_initialized = function()
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+                pattern = { "*.rs" },
+                callback = function()
+                    local _, _ = pcall(vim.lsp.codelens.refresh)
+                end,
+            })
+        end,
     },
     -- LSP configuration
     server = {

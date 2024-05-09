@@ -3,6 +3,15 @@ local function desc(description)
     return { noremap = true, silent = true, buffer = bufnr, desc = description }
 end
 
+local wk = require("which-key")
+
+wk.register({
+    r = {
+        name = "Rust",
+        m = { "Macro" },
+    }
+}, { prefix = "<leader>", noremap = true, silent = true, buffer = bufnr })
+
 vim.keymap.set(
     "n", "K",
     function()
@@ -35,9 +44,9 @@ vim.keymap.set('n', '<leader>rl', function()
     vim.cmd.RustLsp { 'runnables', bang = true }
 end, desc('[r]ust: [r]unnables [l]ast'))
 
-vim.keymap.set('n', '<leader>rtt', function()
+vim.keymap.set('n', '<leader>rt', function()
     vim.cmd.RustLsp('testables')
-end, desc('[r]ust: [t]es[t]ables'))
+end, desc('[r]ust: [t]estables'))
 
 vim.keymap.set('n', '<leader>rtl', function()
     vim.cmd.RustLsp { 'testables', bang = true }

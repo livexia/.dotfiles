@@ -230,7 +230,18 @@ lvim.plugins = {
         opts = {
             -- options
         },
-    }
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        -- see: ~/.config/lvim/plugin/neotest.lua
+    },
+    { "nvim-telescope/telescope-ui-select.nvim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -271,7 +282,17 @@ vim.g.rustaceanvim = {
                     runBuildScripts = true,
                 },
                 checkOnSave = {
+                    allFeatures = true,
                     command = "clippy",
+                    extraArgs = { "--no-deps" },
+                },
+                procMacro = {
+                    enable = true,
+                    ignored = {
+                        ["async-trait"] = { "async_trait" },
+                        ["napi-derive"] = { "napi" },
+                        ["async-recursion"] = { "async_recursion" },
+                    },
                 },
             },
         },

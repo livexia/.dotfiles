@@ -48,6 +48,18 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 -- lvim.builtin.nvimtree.setup.update_focused_file.update_cwd = true
 -- lvim.builtin.nvimtree.setup.respect_buf_cwd = true
 
+lvim.builtin.telescope.theme = "ivy"
+-- Show previewer when searching git files with default <leader>f
+lvim.builtin.which_key.mappings["f"] = {
+    require("lvim.core.telescope.custom-finders").find_project_files,
+    "Find File"
+}
+-- Show previewer when searching buffers with <leader>bf
+lvim.builtin.which_key.mappings.b.f = {
+    "<cmd>Telescope buffers<cr>",
+    "Find"
+}
+
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
     "bash",

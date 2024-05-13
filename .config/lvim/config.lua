@@ -236,4 +236,5 @@ lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(serve
   return server ~= "pylsp"
 end, lvim.lsp.automatic_configuration.skipped_servers)
 
-require("livexia")
+-- loading lua/lib/safe_require
+require("lib.safe_require")

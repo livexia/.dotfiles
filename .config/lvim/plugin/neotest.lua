@@ -1,8 +1,12 @@
+local neotest = safe_require("neotest")
+if not neotest then
+  return
+end
+
 local function desc(description)
   return { noremap = true, silent = true, desc = description }
 end
 
-local neotest = require("neotest")
 local wk = require("which-key")
 
 wk.register({

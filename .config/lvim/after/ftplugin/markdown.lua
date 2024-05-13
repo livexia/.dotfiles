@@ -1,15 +1,15 @@
-local wk = require("which-key")
+local wk = require "which-key"
 
 local mkdp_opts = {
-	name = "MarkDown",
+  name = "MarkDown",
 
-	p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-	s = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
-	t = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
+  p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
+  s = { "<cmd>MarkdownPreviewStop<cr>", "Markdown Preview Stop" },
+  t = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
 }
 
 wk.register({
-	m = mkdp_opts,
+  m = mkdp_opts,
 }, { prefix = "<leader>" })
 
 -- local keymap = vim.keymap.set

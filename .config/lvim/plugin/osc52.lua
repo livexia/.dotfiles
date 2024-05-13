@@ -1,7 +1,7 @@
 -- see: :h clipboard-osc52
 local osc52 = safe_require("vim.ui.clipboard.osc52")
 
-if not osc52 then
+if not osc52 or not os.getenv("SSH_TTY") then
   return
 end
 

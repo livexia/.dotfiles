@@ -75,14 +75,14 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
-local formatters = require "lvim.lsp.null-ls.formatters"
+local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup {
   { command = "black", filetypes = { "python" } },
   { command = "stylua", filetypes = { "lua" } },
 }
 
 -- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
+local linters = require("lvim.lsp.null-ls.linters")
 linters.setup {
   {
     command = "flake8",
@@ -235,3 +235,5 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= "pylsp"
 end, lvim.lsp.automatic_configuration.skipped_servers)
+
+require("livexia")

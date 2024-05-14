@@ -286,3 +286,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- whatever other lsp config you want
   end,
 })
+
+-- seeting up Diagnostics open float
+lvim.builtin.which_key.mappings.l.o = {
+  function()
+    local _, winid = vim.diagnostic.open_float(nil, { scope = "line" })
+    vim.api.nvim_win_set_config(winid or 0, { focusable = true })
+  end,
+  "Diagnostics open float",
+}

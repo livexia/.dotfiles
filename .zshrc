@@ -124,5 +124,10 @@ fi
 # ohmyzsh git plugin
 GIT_AUTO_FETCH_INTERVAL=1500 # in seconds
 
+# asdf neovim
+alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim stable'
+alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
+
 # profiling zsh
 # zprof

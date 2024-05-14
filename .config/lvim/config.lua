@@ -215,6 +215,38 @@ vim.g.rustaceanvim = {
             ["async-recursion"] = { "async_recursion" },
           },
         },
+        inlayHints = {
+          bindingModeHints = {
+            enable = false,
+          },
+          chainingHints = {
+            enable = true,
+          },
+          closingBraceHints = {
+            enable = true,
+            minLines = 25,
+          },
+          closureReturnTypeHints = {
+            enable = "never",
+          },
+          lifetimeElisionHints = {
+            enable = "never",
+            useParameterNames = false,
+          },
+          maxLength = 25,
+          parameterHints = {
+            enable = true,
+          },
+          reborrowHints = {
+            enable = "never",
+          },
+          renderColons = true,
+          typeHints = {
+            enable = true,
+            hideClosureInitialization = false,
+            hideNamedConstructor = false,
+          },
+        },
       },
     },
   },
@@ -231,10 +263,26 @@ vim.g.rustaceanvim = {
 
 -- add `pyright` to `skipped_servers` list
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
--- remove `jedi_language_server` from `skipped_servers` list
+-- remove wanted lsp from `skipped_servers` list
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= "pylsp"
 end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- loading lua/lib/safe_require
 require("lib.safe_require")
+
+-- setting up inlay_hint
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.server_capabilities.inlayHintProvider then
+      local bufnr = args.buf
+      vim.keymap.set("n", "<leader>lh", function()
+        local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
+        vim.lsp.inlay_hint.enable(not current_setting, { bufnr = bufnr })
+      end, { noremap = true, silent = true, buffer = bufnr, desc = "lsp: toggle inlay hints" })
+    end
+    -- whatever other lsp config you want
+  end,
+})

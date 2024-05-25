@@ -1,6 +1,5 @@
--- vim options
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+-- slience deprecate warning for neovim 12.0
+vim.deprecate = function() end
 
 -- general
 lvim.log.level = "info"
@@ -154,11 +153,57 @@ lvim.plugins = {
     "ckipp01/stylua-nvim",
     build = "cargo install stylua",
   },
+  -- neorg
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  {
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    version = "*", -- Pin Neorg to the latest stable release
+    config = function()
+      -- setting up Neorg
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {
+            config = {
+              folds = false,
+              icon_preset = "diamond",
+            },
+          },
+          ["core.export"] = {},
+          ["core.completion"] = {
+            config = {
+              engine = "nvim-cmp",
+            },
+          },
+          ["core.summary"] = {},
+          ["core.esupports.indent"] = {
+            config = {
+              format_on_enter = true,
+              format_on_escape = true,
+            },
+          },
+          ["core.export.markdown"] = {
+            config = {
+              extensions = "all",
+            },
+          },
+        },
+      }
+    end,
+    -- fix: TS error see: https://github.com/nvim-neorg/neorg/pull/891
+    -- ignore the TS error and run `:Neorg sync-parsers` inside nvim
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.json", "*.jsonc", "*.md" },
+  pattern = { "*.json", "*.jsonc", "*.md", "*.norg" },
   -- enable wrap mode for json files only
   command = "setlocal wrap",
 })
@@ -287,7 +332,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- seeting up Diagnostics open float
+-- setting up Diagnostics open float
 lvim.builtin.which_key.mappings.l.o = {
   function()
     local _, winid = vim.diagnostic.open_float(nil, { scope = "line" })

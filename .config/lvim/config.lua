@@ -1,6 +1,3 @@
--- slience deprecate warning for neovim 12.0
-vim.deprecate = function() end
-
 -- general
 lvim.log.level = "info"
 lvim.format_on_save.enabled = true

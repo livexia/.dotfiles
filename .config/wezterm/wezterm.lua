@@ -14,5 +14,7 @@ config.window_padding = {
 }
 
 config.font_size = 14.0
+config.font = wezterm.font("FiraCode Nerd Font Mono")
+
 config.color_scheme = "Argonaut (Gogh)"
 return config

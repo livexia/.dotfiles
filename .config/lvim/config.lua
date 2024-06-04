@@ -199,7 +199,7 @@ lvim.plugins = {
   {
     "tris203/precognition.nvim",
     --event = "VeryLazy",
-    config = {
+    opts = {
       -- startVisible = true,
       -- showBlankVirtLine = true,
       -- highlightColor = { link = "Comment" },

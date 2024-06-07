@@ -75,6 +75,7 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup {
   { command = "black", filetypes = { "python" } },
   { command = "stylua", filetypes = { "lua" } },
+  { command = "shfmt", filetypes = { "sh", "zsh" } },
 }
 
 -- -- set additional linters
@@ -84,6 +85,11 @@ linters.setup {
     command = "flake8",
     filetypes = { "python" },
     extra_args = { "--max-line-length", "88", "--extend-ignore", "E203" },
+  },
+  {
+    name = "shellcheck",
+    filetypes = { "sh", "zsh" },
+    args = { "--severity", "warning" },
   },
 }
 

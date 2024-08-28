@@ -392,3 +392,7 @@ api.nvim_create_autocmd({ "BufRead", "BufReadPost" }, {
     end
   end,
 })
+
+-- enable jsonls
+-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
+require("lspconfig").jsonls.setup {}

@@ -403,3 +403,7 @@ require("lspconfig").qmlls.setup {}
 
 -- set shortcut for enter normal mode in terminal
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], { silent = true, noremap = true })
+
+-- enabel ocamllsp
+-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ocamllsp
+require("lspconfig").ocamllsp.setup {}

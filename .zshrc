@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 #
 . "$HOME/.cargo/env"
 export PATH=$HOME/.local/bin:$PATH
-. "$HOME/.config/.zshrc-`uname`"
+. "$HOME/.config/.zshrc-$(uname)"
 
 mac_2600x="a8:a1:59:03:1c:10"
 mac_3900x="18:c0:4d:39:85:67"
@@ -117,8 +117,8 @@ eval "$(starship init zsh)"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ocaml
-if type "opam" > /dev/null; then
-    eval $(opam env)
+if type "opam" >/dev/null; then
+	eval $(opam env)
 fi
 
 # ohmyzsh git plugin
@@ -128,6 +128,12 @@ GIT_AUTO_FETCH_INTERVAL=1500 # in seconds
 alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim stable'
 alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
+
+# atuin
+if [ -d "$HOME/.atuin" ]; then
+	. "$HOME/.atuin/bin/env"
+	eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
 # profiling zsh
 # zprof

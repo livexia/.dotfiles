@@ -286,11 +286,11 @@ vim.g.rustaceanvim = {
           loadOutDirsFromCheck = true,
           runBuildScripts = true,
         },
-        checkOnSave = {
-          allFeatures = true,
-          command = "clippy",
-          extraArgs = { "--no-deps" },
-        },
+        -- checkOnSave = {
+        --   allFeatures = true,
+        --   command = "clippy",
+        --   extraArgs = { "--no-deps" },
+        -- },
         procMacro = {
           enable = true,
           ignored = {

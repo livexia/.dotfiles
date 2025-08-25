@@ -6,7 +6,7 @@ return {
     opts_extend = { "spec" },
     event = "VeryLazy",
     opts = {
-      preset = "helix",
+      preset = "modern",
       defaults = {},
       spec = {
         {
